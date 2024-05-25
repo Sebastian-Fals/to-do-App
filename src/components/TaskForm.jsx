@@ -1,6 +1,14 @@
 import React from "react";
 
 function TaskForm() {
+  const createTask = () => {
+    const task = {
+      task: document.getElementById("new-task").value,
+      state: document.getElementById("state").value,
+    };
+    localStorage.setItem("Task", JSON.stringify(task));
+  };
+
   return (
     <form className="flex flex-row items-center justify-center">
       <input
@@ -15,14 +23,15 @@ function TaskForm() {
         name="state"
         id="state"
       >
-        <option value="">Pendiente</option>
-        <option value="">Realizando</option>
-        <option value="">Hecha</option>
+        <option value="0">Pendiente</option>
+        <option value="1">Realizando</option>
+        <option value="2">Hecha</option>
       </select>
       <input
         className="ml-5 rounded-lg border-2 bg-green-200 p-3 text-3xl hover:bg-green-300"
         type="button"
         value="Crear"
+        onClick={createTask}
       />
     </form>
   );

@@ -2,7 +2,7 @@ import React from "react";
 
 function TaskForm() {
   const createTask = () => {
-    let tasks = JSON.parse(localStorage.getItem("Task"));
+    let tasks = JSON.parse(localStorage.getItem("Tasks"));
     if (!Array.isArray(tasks)) {
       tasks = [];
     }
@@ -12,9 +12,14 @@ function TaskForm() {
       task: document.getElementById("new-task").value,
       state: document.getElementById("state").value,
     };
+    if (newTask.task == "") {
+      alert("Por favor llenar los datos");
+      return;
+    }
 
     tasks.push(newTask);
-    localStorage.setItem("Task", JSON.stringify(tasks));
+    localStorage.setItem("Tasks", JSON.stringify(tasks));
+    document.getElementById("new-task").value = "";
   };
 
   return (

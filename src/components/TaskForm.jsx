@@ -2,11 +2,19 @@ import React from "react";
 
 function TaskForm() {
   const createTask = () => {
-    const task = {
+    let tasks = JSON.parse(localStorage.getItem("Task"));
+    if (!Array.isArray(tasks)) {
+      tasks = [];
+    }
+    console.log(tasks);
+    const newTask = {
+      id: Date.now(),
       task: document.getElementById("new-task").value,
       state: document.getElementById("state").value,
     };
-    localStorage.setItem("Task", JSON.stringify(task));
+
+    tasks.push(newTask);
+    localStorage.setItem("Task", JSON.stringify(tasks));
   };
 
   return (

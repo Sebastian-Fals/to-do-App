@@ -6,7 +6,6 @@ function TaskForm() {
     if (!Array.isArray(tasks)) {
       tasks = [];
     }
-    console.log(tasks);
     const newTask = {
       id: Date.now(),
       task: document.getElementById("new-task").value,
@@ -20,6 +19,7 @@ function TaskForm() {
     tasks.push(newTask);
     localStorage.setItem("Tasks", JSON.stringify(tasks));
     document.getElementById("new-task").value = "";
+    window.location.reload();
   };
 
   return (
@@ -47,7 +47,7 @@ function TaskForm() {
       </select>
       <input
         className="ml-5 rounded-lg border-2 bg-green-200 p-3 text-3xl hover:bg-green-300"
-        type="button"
+        type="submit"
         value="Crear"
         onClick={createTask}
       />

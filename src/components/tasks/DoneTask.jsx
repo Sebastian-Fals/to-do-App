@@ -8,7 +8,7 @@ function DoneTask() {
       <h2 className="block text-2xl">Done taks</h2>
       {allTasks.map((e) => {
         if (e.state == 2) {
-          return <Task key={e.id} task={e.task}></Task>;
+          return <Task key={e.id} task={e.task} id={e.id}></Task>;
         }
       })}
     </article>
